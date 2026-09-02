@@ -141,10 +141,14 @@ function runBurst(model, userText = "hello") {
 		};
 		globalThis.__cyrOpts = JSON.stringify({
 			userText,
-			endpoint: ENDPOINT,
-			apiKey: "mock-key",
-			model,
-			useOpenAI: true,
+			provider: "openai",
+			config: {
+				conn: {
+					endpoint: ENDPOINT,
+					api_key: "mock-key",
+					model,
+				},
+			},
 		});
 		const watchdog = setTimeout(() => {
 			if (!done) {
